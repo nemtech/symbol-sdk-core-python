@@ -1,6 +1,9 @@
 # IxNet
 Adding Post Quantum Cryptography Capabilities to NEM Symbol SDK
 
+## Inspiration
+Ix is the Mayan Symbol for Feminine Energy as represented by a Jaguar.
+
 ## Additons
 - NIST Randomness Beacon
 - Winternitz One Time Signature
