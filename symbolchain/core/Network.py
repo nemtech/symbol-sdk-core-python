@@ -28,6 +28,21 @@ class Network:
 
         return self.create_address(version, checksum)
 
+    def is_valid_address(self, address):
+        """Validates the address."""
+        if address.bytes[0] != self.identifier:
+            return False
+
+        hash_builder = self.address_hasher()
+        hash_builder.update(address.bytes[0:1 + 20])
+
+        checksum = address.bytes[1+20:]
+        actual_checksum = hash_builder.digest()[0:len(checksum)]
+        if checksum != actual_checksum:
+            print('mismatch {} vs {}'.format(checksum, actual_checksum))
+
+        return checksum == actual_checksum
+
     @abstractmethod
     def address_hasher(self):
         """Gets the primary hasher to use in the public key to address conversion."""
